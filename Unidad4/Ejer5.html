@@ -1,0 +1,80 @@
+<!-- 5.-Añade las siguientes funcionalidades al ejercicio anterior:
+◦ Borrado de lineas con el ratón (mediante la pulsación del botón que tú
+decidas)
+◦ Borrar por completo el canvas (con un botón). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibuja y borra en el canvas</title>
+    <style>
+        /*Estilos para la tabla y las celdas*/
+        table{
+            border-collapse: collapse; /*Elimina el espacio entre los bordes de las celdas*/ 
+        }
+        td {
+            width: 10px; /*Ancho de celda*/
+            height: 10px; /*Alto de celda */
+            border: 1px solid #ddd; /*Borde gris claro para cada celda*/
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Crear el canvas de 100x100 celdas cuando la página se haya cargado (evento onLoad)
+        function crearCanvas() {
+            const tabla = document.createElement('table'); // Crea una tabla HTML
+            tabla.id = "canvas"; // Asigna un ID al canvas para poder accederlo después
+
+            for (let i = 0; i < 100; i++) { // Bucle para crear las filas (100 filas)
+                const fila = document.createElement('tr'); // Crea una fila (tr)
+                for (let j = 0; j < 100; j++) { // Bucle para crear las celdas en cada fila (100 celdas por fila)
+                    const celda = document.createElement('td'); // Crea una celda (td)
+                    
+                    // Añade un evento 'mousemove' a cada celda para detectar el movimiento del ratón
+                    celda.addEventListener('mousemove', pintarOBorrarCelda); 
+                    
+                    fila.appendChild(celda); // Añade la celda a la fila
+                }
+                tabla.appendChild(fila); // Añade la fila a la tabla
+            }
+            document.body.appendChild(tabla); // Añade la tabla completa al cuerpo del documento
+        }
+
+        // Función para pintar o borrar las celdas dependiendo de las teclas o botones presionados
+        function pintarOBorrarCelda(event) {
+            if (event.buttons === 1) { // Botón izquierdo del ratón presionado
+                if (event.ctrlKey) { // Si la tecla Ctrl está presionada
+                    event.target.style.backgroundColor = 'red'; // Pinta la celda de rojo
+                } else if (event.shiftKey) { // Si la tecla Shift está presionada
+                    event.target.style.backgroundColor = 'blue'; // Pinta la celda de azul
+                }
+            } else if (event.buttons === 2) { // Botón derecho del ratón presionado (borrar)
+                event.target.style.backgroundColor = 'white'; // Borra la celda (pinta de blanco)
+            }
+        }
+
+        // Deshabilitar el menú contextual del botón derecho del ratón (para que funcione el borrado)
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        // Función para borrar todo el canvas, restableciendo todas las celdas a blanco
+        function borrarCanvas() {
+            const celdas = document.querySelectorAll("td"); // Selecciona todas las celdas
+            celdas.forEach(function(celda) {
+                celda.style.backgroundColor = 'white'; // Establece el fondo de todas las celdas a blanco
+            });
+        }
+
+        // Ejecutar la función crearCanvas al cargar la página (evento onLoad)
+        window.onload = crearCanvas;
+    </script>
+
+<h1>Dibuja y borra en el canvas con el ratón</h1>
+<p>Mantén presionada la tecla <b>Ctrl</b> para pintar en rojo, la tecla <b>Shift</b> para pintar en azul, o el botón derecho del ratón para borrar.</p>
+<button onclick="borrarCanvas()">Borrar todo el canvas</button> <!-- Botón para borrar todo el canvas -->
+    
+</body>
+</html>

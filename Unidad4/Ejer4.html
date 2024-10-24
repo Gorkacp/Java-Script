@@ -1,0 +1,63 @@
+<!-- 4.-Eventos onMouseMove y onLoad. Debemos ser capaces de dibujar con nuestro ratón
+en dos colores diferentes. Para ello primero simularemos que disponemos de un
+canvas gráfico: realmente se tratará de una tabla con celdas de pequeño tamaño
+(100x100 puede valer). Tu programa creará ese canvas una vez cargada la página
+(onLoad). Lo siguiente será detectar el movimiento del ratón sobre las celdas para
+pintarlas de un color, el cual será rojo si se mantiene pulsada simultaneamente la
+tecla Ctrl y azul si se pulsa Shift. En otro caso no deberá pintarse nada. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibuja con el ratón</title>
+    <style>
+        /* Estilos para la tabla y las celdas */
+        table {
+            border-collapse: collapse; /* Elimina el espacio entre los bordes de las celdas */
+        }
+        td {
+            width: 10px; /* Ancho de cada celda */
+            height: 10px; /* Alto de cada celda */
+            border: 1px solid #ddd; /* Borde gris claro para cada celda */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Crear el canvas de 100x100 celdas cuando la página se haya cargado (evento onLoad)
+        function crearCanvas() {
+            const tabla = document.createElement('table'); // Crea una tabla HTML
+            for (let i = 0; i < 100; i++) { // Bucle para crear las filas (100 filas)
+                const fila = document.createElement('tr'); // Crea una fila (tr)
+                for (let j = 0; j < 100; j++) { // Bucle para crear las celdas en cada fila (100 celdas por fila)
+                    const celda = document.createElement('td'); // Crea una celda (td)
+                    
+                    // Añade un evento 'mousemove' a cada celda para detectar el movimiento del ratón
+                    celda.addEventListener('mousemove', pintarCelda); 
+                    
+                    fila.appendChild(celda); // Añade la celda a la fila
+                }
+                tabla.appendChild(fila); // Añade la fila a la tabla
+            }
+            document.body.appendChild(tabla); // Añade la tabla completa al cuerpo del documento
+        }
+
+        // Función para pintar las celdas dependiendo de las teclas presionadas
+        function pintarCelda(event) {
+            if (event.ctrlKey) { // Si la tecla Ctrl está presionada
+                event.target.style.backgroundColor = 'red'; // Pinta la celda de rojo
+            } else if (event.shiftKey) { // Si la tecla Shift está presionada
+                event.target.style.backgroundColor = 'blue'; // Pinta la celda de azul
+            }
+            // Si no se presionan Ctrl ni Shift, no pasa nada
+        }
+
+        // Ejecutar la función crearCanvas al cargar la página (evento onLoad)
+        window.onload = crearCanvas;
+    </script>
+    
+    <h1>Dibuja la tabla con el ratón</h1>
+    <p>Mantén presionado la tecla <b> Ctrl </b> para pintar en rojo o la tecla <b> Shift </b> para pintar en azul </p>
+</body>
+</html>
