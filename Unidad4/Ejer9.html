@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar Imagen</title>
+    <style>
+        /* Estilos para centrar la imagen dentro del contenedor */
+        .container {
+            width: 100vw; /* Ancho total de la ventana */
+            height: 100vh; /* Alto total de la ventana */
+            display: flex;
+            align-items: center; /* Centra verticalmente el contenido */
+            justify-content: center; /* Centra horizontalmente el contenido */
+            overflow: hidden; /* Oculta el desbordamiento del contenedor */
+            position: relative; /* Define el contenedor como referencia para la posición absoluta */
+        }
+
+        img {
+            width: 150px; /* Ancho de la imagen */
+            height: auto; /* Ajusta la altura para mantener la relación de aspecto */
+            cursor: pointer; /* Cambia el cursor a una mano al pasar por la imagen */
+            position: absolute; /* Permite mover la imagen dentro del contenedor */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen que queremos hacer arrastrable -->
+        <img src="./testimonials-1.jpg" alt="Imagen Arrastrable" id="draggable">
+    </div>
+
+    <script>
+        // Obtener la referencia a la imagen
+        const image = document.getElementById('draggable');
+        
+        let isDragging = false; // Variable para indicar si la imagen está siendo arrastrada
+        let offsetX, offsetY; // Variables para almacenar la posición inicial del ratón en relación con la imagen
+
+        // Evento que se activa al hacer clic en la imagen (mousedown)
+        image.addEventListener('mousedown', (e) => {
+            isDragging = true; // Activamos el estado de arrastre
+            // Calculamos la diferencia entre la posición del ratón y la posición de la imagen
+            offsetX = e.clientX - image.offsetLeft;
+            offsetY = e.clientY - image.offsetTop;
+        });
+
+        // Evento que se activa al mover el ratón mientras se mantiene presionado (mousemove)
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) { // Solo se ejecuta si el arrastre está activo
+                // Reubicamos la imagen según la posición actual del ratón menos el desplazamiento inicial
+                image.style.left = `${e.clientX - offsetX}px`;
+                image.style.top = `${e.clientY - offsetY}px`;
+            }
+        });
+
+        // Evento que se activa al soltar el botón del ratón (mouseup)
+        document.addEventListener('mouseup', () => {
+            isDragging = false; // Desactivamos el estado de arrastre
+        });
+    </script>
+</body>
+</html>
