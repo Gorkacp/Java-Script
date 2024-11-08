@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Validation</title>
+    
+    <!-- Estilos en línea -->
+    <style>
+        /* Estilo del cuerpo de la página, centrando el contenido y aplicando un fondo rosa */
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        /* Contenedor del contenido principal */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        /* Título principal */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Línea decorativa debajo del título */
+        .underline {
+            width: 50%;
+            height: 2px;
+            background-color: white;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Contenedor de los mensajes de validación, oculto por defecto */
+        .validation {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Estilo de los mensajes de validación individuales */
+        .validation span {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            opacity: 0.5;
+        }
+
+        /* Estilo de los mensajes cuando son inválidos */
+        .invalid {
+            color: white;
+            opacity: 1;
+        }
+
+        /* Estilo de los mensajes cuando son válidos */
+        .valid {
+            color: green;
+            opacity: 1;
+        }
+
+        /* Estilo del campo de entrada de texto */
+        input[type="text"] {
+            font-size: 1.2rem;
+            padding: 10px;
+            width: 80%;
+            margin: 0 auto 20px auto;
+            display: block;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: black;
+        }
+
+        /* Estilo del botón de enviar */
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            color: white;
+            background-color: gray;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed;
+        }
+
+        /* Estilo del botón cuando está habilitado */
+        button.enabled {
+            background-color: green;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Título de la página -->
+        <h1>Username</h1>
+        <div class="underline"></div>
+
+        <!-- Campo de entrada para el nombre de usuario, con un evento oninput para ejecutar la validación en tiempo real -->
+        <input type="text" id="username" placeholder="Enter username" oninput="validateUsername()">
+
+        <!-- Div con mensajes de validación específicos -->
+        <div class="validation" id="validation">
+            <span id="lowercase" class="invalid">. Lowercase character</span>
+            <span id="uppercase" class="invalid">. 1 Uppercase character</span>
+            <span id="minlength" class="invalid">. 6 Minimum characters</span>
+        </div>
+
+        <!-- Botón de envío, inicialmente desactivado -->
+        <button id="submitBtn" disabled>Enviar</button>
+    </div>
+
+
+
+    
+                                                       <!--     SCRIPT    -->
+    <script>
+        // Función principal para validar el nombre de usuario
+        function validateUsername() {
+            const username = document.getElementById("username").value;
+            const validationDiv = document.getElementById("validation");
+            const submitBtn = document.getElementById("submitBtn");
+
+            // Reglas de validación (minúscula, mayúscula y longitud mínima)
+            const hasLowercase = /[a-z]/.test(username);
+            const hasUppercase = /[A-Z]/.test(username);
+            const minLength = username.length >= 6;
+
+            // Muestra las reglas solo cuando el usuario comienza a escribir
+            validationDiv.style.display = username.length > 0 ? "block" : "none";
+
+            // Llama a la función para actualizar visualmente el estado de cada regla
+            updateValidationState("lowercase", hasLowercase);
+            updateValidationState("uppercase", hasUppercase);
+            updateValidationState("minlength", minLength);
+
+            // Habilita el botón de envío si se cumplen todas las reglas
+            const allValid = hasLowercase && hasUppercase && minLength;
+            submitBtn.disabled = !allValid; // Desactiva si no se cumplen todas las reglas
+            submitBtn.classList.toggle("enabled", allValid); // Cambia el color del botón si está habilitado
+        }
+
+        // Función que actualiza el estado de cada mensaje de validación
+        function updateValidationState(elementId, isValid) {
+            const element = document.getElementById(elementId);
+            if (isValid) {
+                element.classList.add("valid");   // Agrega el estilo "valid" si la regla es válida
+                element.classList.remove("invalid"); // Quita el estilo "invalid" si la regla es válida
+            } else {
+                element.classList.add("invalid"); // Agrega el estilo "invalid" si la regla no se cumple
+                element.classList.remove("valid");   // Quita el estilo "valid" si la regla no se cumple
+            }
+        }
+    </script>
+
+</body>
+</html>
+

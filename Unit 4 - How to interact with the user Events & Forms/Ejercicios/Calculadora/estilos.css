@@ -1,0 +1,65 @@
+/* Estilos para el cuerpo de la página */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #e0e0e0; /* Color de fondo suave */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para la calculadora */
+.calculator {
+    background-color: #fff; /* Fondo blanco para la calculadora */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    padding: 20px; /* Espacio interno */
+    width: 300px; /* Ancho de la calculadora */
+}
+
+/* Estilo para la pantalla de la calculadora */
+#display {
+    width: 100%; /* Ancho completo */
+    height: 40px; /* Altura de la pantalla */
+    font-size: 24px; /* Tamaño de la fuente */
+    text-align: right; /* Alineación del texto a la derecha */
+    margin-bottom: 10px; /* Espacio debajo de la pantalla */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px; /* Espacio interno */
+    box-sizing: border-box; /* Incluir el padding en el tamaño total */
+}
+
+/* Estilo para los botones de la calculadora */
+.buttons {
+    display: grid; /* Usar grid para organizar los botones */
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas de igual tamaño */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilo para los botones individuales */
+button {
+    height: 50px; /* Altura de los botones */
+    font-size: 18px; /* Tamaño de la fuente */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre los botones */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Cambia el color de fondo de los botones al pasar el mouse */
+button:hover {
+    background-color: #f0f0f0; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilo especial para el botón de igual */
+.equals {
+    background-color: #4CAF50; /* Color verde para el botón de igual */
+    color: white; /* Texto blanco */
+}
+
+/* Cambia el color de fondo del botón de igual al pasar el mouse */
+.equals:hover {
+    background-color: #45a049; /* Color verde más oscuro al pasar el mouse */
+}
