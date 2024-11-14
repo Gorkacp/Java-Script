@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cookies - Personalización</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #settings-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a nuestro sitio web</h1>
+    <p id="greeting"></p>
+    <a href="javascript:void(0)" id="session-link" style="display:none;" onclick="logout()">Cerrar sesión</a>
+
+    <div id="settings-container">
+        <h2>Configura la apariencia de la página:</h2>
+        <label for="background-color">Color de fondo:</label>
+        <input type="color" id="background-color">
+        <br><br>
+
+        <label for="paragraph-color">Color del párrafo:</label>
+        <input type="color" id="paragraph-color">
+        <br><br>
+
+        <label for="font-size">Tamaño de la letra:</label>
+        <input type="number" id="font-size" min="10" max="50" step="1">
+        <br><br>
+
+        <button onclick="saveSettings()">Guardar configuración</button>
+    </div>
+
+    <script src="cookie.js"></script>
+</body>
+</html>
