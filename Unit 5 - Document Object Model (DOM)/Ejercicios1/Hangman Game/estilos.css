@@ -1,0 +1,93 @@
+/* Variables */
+:root {
+    --bg-color: #a8e06e; /* Pistacho */
+    --text-color: #fff; /* Blanco */
+    --button-bg: #fff;
+    --button-text: #a8e06e;
+    --button-border: #fff;
+    --font-family: 'Arial', sans-serif;
+  }
+  
+  /* Global Styles */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  /* Container */
+  .container {
+    padding: 20px;
+  }
+  
+  /* Titles */
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+  
+  p {
+    margin: 10px 0;
+  }
+  
+  /* Alphabet */
+  .alphabet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .alphabet button {
+    background-color: white;
+    color: var(--bg-color);
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .alphabet button.selected {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* Word to Guess */
+  .word {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  
+  /* Lives Remaining */
+  #lives {
+    font-size: 1.2rem;
+  }
+  
+  #lives-count {
+    font-weight: bold;
+  }
+  
+  /* Hint Button */
+  #hint-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-border);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  

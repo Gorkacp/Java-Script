@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="container">
+    <h1>HANGMAN</h1>
+    <h2>Vanilla JavaScript Hangman Game</h2>
+    <p>Use the alphabet below to guess the word, or click "Hint" to get a clue.</p>
+
+    <!-- Alphabet Section -->
+    <div id="alphabet" class="alphabet"></div>
+
+    <!-- Category Display -->
+    <p id="category">The Chosen Category is: <span>Cities</span></p>
+
+    <!-- Word to Guess -->
+    <div id="word" class="word"></div>
+
+    <!-- Lives Remaining -->
+    <p id="lives">YOU HAVE <span id="lives-count">10</span> LIVES</p>
+
+    <!-- Hint Button -->
+    <button id="hint-button">Hint</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
