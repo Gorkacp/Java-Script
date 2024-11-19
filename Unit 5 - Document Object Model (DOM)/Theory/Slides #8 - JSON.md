@@ -1,0 +1,1 @@
+Haga clic en el enlace [Slides #8 - JSON](https://educacionadistancia.juntadeandalucia.es/centros/granada/pluginfile.php/179738/mod_resource/content/1/JSON%20Slides.pdf) para abrir el recurso.

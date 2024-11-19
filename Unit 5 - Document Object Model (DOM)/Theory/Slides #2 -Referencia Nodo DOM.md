@@ -1,0 +1,1 @@
+Haga clic en el enlace [Slides #2 -Referencia Nodo DOM](https://developer.mozilla.org/es/docs/Web/API/Node) para abrir el recurso.

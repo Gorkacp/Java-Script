@@ -1,0 +1,1 @@
+Haga clic en el enlace [Slides #6 - Graphics Libraries: Google Charts](https://developers.google.com/chart/interactive/docs/index) para abrir el recurso.

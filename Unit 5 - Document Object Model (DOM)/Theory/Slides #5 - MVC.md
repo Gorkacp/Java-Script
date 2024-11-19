@@ -1,0 +1,1 @@
+Haga clic en el enlace [Slides #5 - MVC](https://www.teaching-materials.org/_deprecated/jsmvc/#/) para abrir el recurso.

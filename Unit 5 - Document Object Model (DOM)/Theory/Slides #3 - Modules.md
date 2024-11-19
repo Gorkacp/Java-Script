@@ -1,0 +1,1 @@
+Haga clic en el enlace [Slides #3 - Modules](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Modules) para abrir el recurso.

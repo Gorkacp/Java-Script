@@ -1,0 +1,1 @@
+Haga clic en el enlace [Slides #7 - Web Storage](https://www.w3schools.com/html/html5_webstorage.asp) para abrir el recurso.
